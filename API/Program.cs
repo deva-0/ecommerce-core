@@ -13,7 +13,7 @@ namespace API
     {
         public async static Task Main(string[] args)
         {
-            // apply pending migrations on run
+            // apply pending migrations and seed data on run
             var hostBuilder = CreateHostBuilder(args).Build();
             using (var scope = hostBuilder.Services.CreateScope())
             {
@@ -23,6 +23,7 @@ namespace API
                 {
                     var context = services.GetRequiredService<StoreContext>();
                     await context.Database.MigrateAsync();
+                    await StoreContextSeed.SeedAsync(context, loggerFactory);
                 }
                 catch (Exception ex)
                 {
