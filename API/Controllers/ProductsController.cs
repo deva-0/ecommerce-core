@@ -29,7 +29,7 @@ namespace API.Controllers
         /// <summary>
         /// Retrieves product with matching id.
         /// </summary>
-        /// <param name="id">Id of product inside database</param>
+        /// <param name="id">ID of product inside database</param>
         /// <returns>Product with matching id.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
@@ -37,13 +37,20 @@ namespace API.Controllers
             return await _productRepository.GetProductByIdAsync(id);
         }
 
+        /// <summary>
+        /// Retrieves all available product brands from database. 
+        /// </summary>
+        /// <returns>All available product brands</returns>
         [HttpGet("brands")]
         public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetProductBrands()
         {
             return Ok(await _productRepository.GetProductBrandsAsync());
         }
 
-
+        /// <summary>
+        /// Retrieves all available product types from database.
+        /// </summary>
+        /// <returns>All available product types</returns>
         [HttpGet("types")]
         public async Task<ActionResult<IReadOnlyList<ProductType>>> GetProductTypes()
         {

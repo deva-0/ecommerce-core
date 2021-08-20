@@ -21,7 +21,7 @@ namespace Infrastructure.Data
         {
             try
             {
-                string basePath = @"../Infrastructure/Data/SeedData/";
+                const string basePath = @"../Infrastructure/Data/SeedData/";
                 if (!context.ProductBrands.Any())
                 {
                     var brandsData = await File.ReadAllTextAsync(basePath + "brands.json");

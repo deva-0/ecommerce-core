@@ -1,3 +1,6 @@
+using System;
+using System.IO;
+using System.Reflection;
 using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
@@ -28,9 +31,14 @@ namespace API
                 db.UseSqlite(_config.GetConnectionString("DefaultConnection"));
             });
 
-            services.AddSwaggerGen(options =>
+            services.AddSwaggerGen(setup =>
             {
-                options.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
+                setup.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
+
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                setup.IncludeXmlComments(xmlPath);
             });
         }
 
