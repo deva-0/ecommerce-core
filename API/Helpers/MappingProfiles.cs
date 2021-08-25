@@ -6,6 +6,9 @@ namespace API.Helpers
 {
     public class MappingProfiles : Profile
     {
+        /// <summary>
+        /// Custom profiles required for AutoMapper package to work. 
+        /// </summary>
         public MappingProfiles()
         {
             CreateMap<Product, ProductToReturnDto>()

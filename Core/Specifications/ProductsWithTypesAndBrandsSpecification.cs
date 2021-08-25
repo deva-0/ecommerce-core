@@ -4,6 +4,9 @@ using Core.Entities;
 
 namespace Core.Specifications
 {
+    /// <summary>
+    /// Adds types and brands to product query. 
+    /// </summary>
     public class ProductsWithTypesAndBrandsSpecification : BaseSpecification<Product>
     {
         public ProductsWithTypesAndBrandsSpecification()
