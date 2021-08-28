@@ -18,5 +18,13 @@ namespace Core.Specifications
         /// Each expression in list passed to Include() 
         /// </summary>
         List<Expression<Func<T, object>>> Includes { get; }
+        /// <summary>
+        /// Expression dictates how to order returned items. 
+        /// </summary>
+        Expression<Func<T, object>> OrderBy { get; }
+        /// <summary>
+        /// Expression dictates how to order returned items in descending sequence. 
+        /// </summary>
+        Expression<Func<T, object>> OrderByDescending { get; }
     }
 }
